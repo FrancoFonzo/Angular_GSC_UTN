@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { EventService } from '../event.service';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-create-event',
@@ -10,18 +10,18 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class CreateEventComponent implements OnInit {
 
-  formEvent = new FormGroup({
-    name: new FormControl(''),
-    date: new FormControl(''),
-    time: new FormControl(''),
-    location: new FormGroup({
-      address: new FormControl(''),
-      city: new FormControl(''),
-      country: new FormControl(''),
-    }),
-  });
+	formEvent = this.formBuilder.group({
+		name: "",
+		date: "",
+		time: "",
+		location: this.formBuilder.group({
+       address: "",
+       city: "",
+       country: "" 
+    })
+	}); 
 
-  constructor(private eventService: EventService, private router: Router) { }
+  constructor(private eventService: EventService, private router: Router, private formBuilder: FormBuilder) { }
 
   ngOnInit() {
   }
