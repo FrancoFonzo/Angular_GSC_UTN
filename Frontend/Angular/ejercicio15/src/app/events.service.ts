@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
+import { IEvent } from './iEvent';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EventsService {
 
-  events = [
+  events: IEvent[] = [
     {
+      id: 1,
       name: 'Angular Connect',
       date: '9/26/2036',
       time: '10am',
@@ -17,6 +19,7 @@ export class EventsService {
       }
     },
     {
+      id: 2,
       name: 'ng-nl',
       date: '4/15/2037',
       time: '9am',
@@ -27,6 +30,7 @@ export class EventsService {
       }
     },
     {
+      id: 3,
       name: 'ng-conf 2037',
       date: '4/15/2037',
       time: '9am',
@@ -37,6 +41,7 @@ export class EventsService {
       }
     },
     {
+      id: 4,
       name: 'UN Angular Summit',
       date: '6/10/2037',
       time: '8am',
@@ -52,5 +57,9 @@ export class EventsService {
 
   getEvents(){
     return this.events;
+  }
+
+  getOne(id: number): IEvent | undefined{
+    return this.events.find(e => e.id == id);
   }
 }

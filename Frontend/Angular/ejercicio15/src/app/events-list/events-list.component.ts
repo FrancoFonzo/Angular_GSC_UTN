@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EventsService } from '../events.service';
+import { IEvent } from '../iEvent';
 
 @Component({
   selector: 'app-events-list',
@@ -8,15 +9,7 @@ import { EventsService } from '../events.service';
 })
 export class EventsListComponent implements OnInit {
 
-  events: {
-      name: string;
-      date: string;
-      time: string;
-      location: {
-          address: string;
-          city: string;
-          country: string;
-      }}[] = []; //TODO: Add IEvents -> events: IEvents[]
+  events: IEvent[] = [];
 
   constructor(private eventService: EventsService) { }
 

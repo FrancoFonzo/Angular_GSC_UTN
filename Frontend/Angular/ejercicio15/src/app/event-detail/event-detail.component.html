@@ -1,0 +1,8 @@
+<div *ngIf="event">
+    <h1>{{event.name}}</h1>
+    <div>Date: {{event.date}}</div>
+    <div>Time: {{event.time}}</div>
+    <div>Address: {{event.location.address}}, {{event.location.city}}, {{event.location.country}}</div>
+</div>
+
+<div *ngIf="!event">Event not found!</div>
