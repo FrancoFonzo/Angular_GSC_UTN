@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { EventsService } from '../events.service';
 import { IEvent } from '../iEvent';
 
@@ -14,12 +14,17 @@ export class EventDetailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private eventService: EventsService
+    private eventService: EventsService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.event = this.eventService.getOne(id);
+  }
+
+  returnToEvents(): void{
+    this.router.navigate(["/events"]);
   }
 
 }
