@@ -9,4 +9,8 @@ label {
 .form-group {
     margin-top: 5px;
 }
+
+.alert{
+    color: #dc143c;
+}
  
