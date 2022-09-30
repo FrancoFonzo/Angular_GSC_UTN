@@ -7,7 +7,9 @@ import { InvalidEventGuard } from './invalid-event.guard';
 
 const routes: Routes = [
   { path: 'events', component: EventsListComponent },
-  { path: 'event/:id', component: EventDetailComponent, canActivate: [InvalidEventGuard] },
+  { path: 'event/:id', component: EventDetailComponent,
+    canActivate: [InvalidEventGuard],
+    canDeactivate: [InvalidEventGuard] },
   { path: '', redirectTo: '/events', pathMatch: 'full' }
 ];
 

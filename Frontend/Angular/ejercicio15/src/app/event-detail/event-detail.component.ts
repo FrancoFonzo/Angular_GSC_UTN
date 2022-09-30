@@ -10,7 +10,8 @@ import { IEvent } from '../iEvent';
 })
 export class EventDetailComponent implements OnInit {
 
-  event: IEvent | undefined;
+  public event: IEvent | undefined;
+  public reviewed: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -25,6 +26,10 @@ export class EventDetailComponent implements OnInit {
 
   returnToEvents(): void{
     this.router.navigate(["/events"]);
+  }
+
+  setReviewed(){
+    this.reviewed = !this.reviewed;
   }
 
 }
