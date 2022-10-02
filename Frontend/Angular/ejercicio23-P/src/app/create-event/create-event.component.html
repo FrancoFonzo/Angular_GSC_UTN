@@ -10,14 +10,14 @@
     </div>
     <div class="form-group">
       <label for="date">Fecha: </label>
-      <input id="date" name="date" type="text" [(ngModel)]="model.date" #date="ngModel" required/>
-      <span [hidden]="isValid(date)" class="alert"> 
-        Campo obligatorio!
+      <input id="date" name="date" type="date" [(ngModel)]="model.date" #date="ngModel" required appDateValidator/>
+      <span [hidden]="!date.errors?.['isValid']" class="alert">
+        {{date.errors?.['message']}}
       </span>
     </div>
     <div class="form-group">
       <label for="time">Hora: </label>
-      <input id="time" name="time" type="text" [(ngModel)]="model.time" #time="ngModel" required/>
+      <input id="time" name="time" type="time" [(ngModel)]="model.time" #time="ngModel" required/>
       <span [hidden]="isValid(time)" class="alert"> 
         Campo obligatorio!
       </span>
@@ -39,10 +39,10 @@
     <div class="form-group">
       <label for="country">Pais: </label>
       <input id="country" name="country" type="text" [(ngModel)]="model.location.country" #country="ngModel" required pattern="[A-Z]{2}"/>
-      <span [hidden]="country.value.length != 0 || !country.touched" class="alert"> 
+      <span [hidden]="!country.errors?.['required'] || !country.touched" class="alert"> 
         Campo obligatorio!
       </span>
-      <span [hidden]="country.valid || country.value.length == 0" class="alert"> 
+      <span [hidden]="!country.errors?.['pattern'] || country.errors?.['required']" class="alert"> 
         El pais debe ser representado por 2 letras mayusculas!
       </span>
     </div>
