@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgModel } from '@angular/forms';
 import { Router } from '@angular/router';
 import { EventService } from '../event.service';
 
@@ -27,6 +28,10 @@ model = {
 
   cancel() {
     this.router.navigate(['/events']);
+  }
+
+  isValid(control: NgModel): boolean | null {
+    return control.valid || !control.touched;  
   }
 
   onSubmit(): void{
