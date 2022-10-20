@@ -12,5 +12,14 @@
             
             return cuit;
         }
+
+        public static string RandomSubstring(this string s)
+        {
+            Random r = new Random();
+            int start = r.Next(0, s.Length);
+            int end = r.Next(start, s.Length);
+            int length = end - start + 1;
+            return s.Substring(start, length);
+        }
     }
 }
