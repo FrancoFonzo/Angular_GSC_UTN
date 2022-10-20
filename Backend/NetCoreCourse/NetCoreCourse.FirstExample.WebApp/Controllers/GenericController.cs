@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using NetCoreCourse.FirstExample.WebApp.Dto;
+using NetCoreCourse.FirstExample.WebApp.Entities;
 using NetCoreCourse.FirstExample.WebApp.Handlers;
 
 namespace NetCoreCourse.FirstExample.WebApp.Controllers
@@ -72,5 +73,16 @@ namespace NetCoreCourse.FirstExample.WebApp.Controllers
             return Ok(new List<string> { "Franco", "Fonzo" });
         }
 
+        [HttpGet("addentity")]
+        public IActionResult AddEntity()
+        {
+            var repo = new RepositorioBase<EntidadBase>();
+            var entidad = new LoanExample 
+            {
+                Id = 1,
+                Descripcion = "Loan Example",               
+            };
+            return Ok(repo.Add(entidad));
+        }
     }
 }
