@@ -12,13 +12,15 @@ namespace NetCoreCourse.FirstExample.WebApp.Controllers
         private readonly IScopedRandomValueService scopedService;
         private readonly ISingletonRandomValueService singletonService;
         private readonly IServiceUsingServices serviceWithServices;
+        private readonly IExerciseService exerciseService;
 
         public ServicesController(
             IForecastService forecastService,
             ITransientRandomValueService transientService,
             IScopedRandomValueService scopedService,
             ISingletonRandomValueService singletonService,
-            IServiceUsingServices serviceWithServices
+            IServiceUsingServices serviceWithServices,
+            IExerciseService exerciseService
         )
 
         {
@@ -27,6 +29,7 @@ namespace NetCoreCourse.FirstExample.WebApp.Controllers
             this.scopedService = scopedService;
             this.singletonService = singletonService;
             this.serviceWithServices = serviceWithServices;
+            this.exerciseService = exerciseService;
         }
 
         [HttpGet("forecast")]
@@ -50,6 +53,13 @@ namespace NetCoreCourse.FirstExample.WebApp.Controllers
             var fromService = serviceWithServices.GetRandomValues();
 
             return Ok(new RandomServiceResponse(fromController, fromService));
+        }
+
+        [HttpGet("exercise")]
+        public IActionResult GiveMeExercise()
+        {
+            var result = exerciseService.DoExercise();
+            return Ok(result);
         }
     }
 }
