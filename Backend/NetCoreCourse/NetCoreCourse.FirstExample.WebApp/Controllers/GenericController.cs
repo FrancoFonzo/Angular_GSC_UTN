@@ -65,5 +65,12 @@ namespace NetCoreCourse.FirstExample.WebApp.Controllers
             // Probar agregando la restriccion al generic.
             return Ok(new { intSpec, charSpec, transportSpec1, transportSpec2 });
         }
+
+        [HttpGet("stringlist")]
+        public IActionResult GetStringList()
+        {
+            return Ok(new List<string> { "Franco", "Fonzo" });
+        }
+
     }
 }
